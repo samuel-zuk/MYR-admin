@@ -5,7 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 
 export default () => (
     <Card>
-        <CardHeader title="Welcome to the administration" />
-        <CardContent>Lorem ipsum sic dolor amet...</CardContent>
+        <CardHeader title="Welcome to the front-end of the backend!" />
+        <CardContent>There really should be more stuff on this page, but there is not.</CardContent>
     </Card>
 );
