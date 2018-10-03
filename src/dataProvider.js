@@ -1,7 +1,7 @@
 import { GET_LIST, GET_ONE, GET_MANY, GET_MANY_REFERENCE, CREATE, UPDATE, DELETE, fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 
-const API_URL = 'http://localhost:1337/apiv1';
+const API_URL = '/apiv1';
 
 /**
  * Maps react-admin queries to my REST API
