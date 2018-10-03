@@ -3,7 +3,7 @@ export default (type, params) => {
     if (type === AUTH_LOGIN) {
         params.email = params.username;
         const { email, password } = params;
-        const request = new Request('http://localhost:1337/apiv1/users/login', {
+        const request = new Request('https://localhost:1337/apiv1/users/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
