@@ -44,15 +44,16 @@ export default (type, resource, params) => {
         case CREATE:
             url = `${API_URL}/${resource}`;
             options.method = 'POST';
-            let body = JSON.stringify(params.data);
+            //let body = { 'body': JSON.stringify(params.data) };
             options = { ...options, ...body }
             break;
         case UPDATE:
             url = `${API_URL}/${resource}/id/${params.id}`;
             options.method = 'PUT';
-            options.body = JSON.stringify(params.data);
-            console.log('options.body')
-            console.log(options.body);
+            let body = {
+                'body': JSON.stringify(params.data)
+            };
+            options = { ...options, ...body }
             break;
         // case UPDATE_MANY:
         //     const query = {
