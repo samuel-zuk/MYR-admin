@@ -18,10 +18,11 @@ export default (type, resource, params) => {
             Accept: 'application/json',
             'Access-Control-Allow-Headers': 'x-access-token',
             'x-access-token': localStorage.getItem('token'),
-            'content-type': 'application/x-www-form-urlencoded'
+            'content-type': 'application/json'
         }),
         method: 'GET'
     };
+    let body;
 
     switch (type) {
         case GET_LIST: {
@@ -30,11 +31,13 @@ export default (type, resource, params) => {
             const query = {
                 sort: JSON.stringify([field, order]),
                 range: JSON.stringify([
-                    (page - 1) * perPage,
-                    page * perPage - 1,
+                    page,
+                    perPage,
                 ]),
                 filter: JSON.stringify(params.filter),
             };
+            // console.log(query)
+            // console.log(queryString.stringify(query))
             url = `${API_URL}/${resource}?${stringify(query)}`;
             break;
         }
@@ -44,13 +47,15 @@ export default (type, resource, params) => {
         case CREATE:
             url = `${API_URL}/${resource}`;
             options.method = 'POST';
-            //let body = { 'body': JSON.stringify(params.data) };
+            body = {
+                'body': JSON.stringify(params.data)
+            };
             options = { ...options, ...body }
             break;
         case UPDATE:
             url = `${API_URL}/${resource}/id/${params.id}`;
             options.method = 'PUT';
-            let body = {
+            body = {
                 'body': JSON.stringify(params.data)
             };
             options = { ...options, ...body }
@@ -64,8 +69,12 @@ export default (type, resource, params) => {
         //     options.body = JSON.stringify(params.data);
         //     break;
         case DELETE:
+            console.log('Delete')
             url = `${API_URL}/${resource}/id/${params.id}`;
             options.method = 'DELETE';
+            options = {
+                ...options
+            }
             break;
         // case DELETE_MANY:
         //     const query = {
@@ -101,18 +110,24 @@ export default (type, resource, params) => {
         default:
             throw new Error(`Unsupported Data Provider request type ${type}`);
     }
-    console.log(options)
-    console.log(url)
+    // console.log(options)
+    // console.log(url)
+    let headers;
     return fetch(url, options)
-        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+            headers = res.headers;
+            return res.json();
+        })
         .then(response => {
+            //console.log(res)
             let data;
             switch (type) {
                 case GET_LIST:
                     data = response.map(record => ({ id: record._id, ...record }))
                     return {
                         data: response.map(record => ({ id: record._id, ...record })),
-                        total: data.length
+                        total: headers.get('Content-Range').split('/').pop()
                     };
                 // data = ({ id: response._id, ...response })
                 // console.log(data)
@@ -121,7 +136,7 @@ export default (type, resource, params) => {
                     data = response.map(record => ({ id: record._id, ...record }))
                     return {
                         data: response.map(record => ({ id: record._id, ...record })),
-                        total: data.length
+                        total: headers.get('Content-Range').split('/').pop()
                     };
                 case GET_MANY_REFERENCE:
                     if (!response.headers.has('content-range')) {
@@ -142,6 +157,8 @@ export default (type, resource, params) => {
                     };
                 case CREATE:
                     return { data: { ...params.data, id: response.id } };
+                case DELETE:
+                    return response;
                 default:
                     data = ({ id: response._id, ...response })
                     //console.log(data)
