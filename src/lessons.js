@@ -46,7 +46,7 @@ const LessonEditToolbar = props => (
 );
 
 export const LessonList = (props) => (
-    <List {...props}>
+    <List {...props} bulkActionButtons={false}>
         <Responsive
             small={
                 <SimpleList
@@ -61,8 +61,13 @@ export const LessonList = (props) => (
                     <TextField source="name" />
                     <TextField source="prompt" />
                     <TextField source="code" />
-                    <TextField source="next" />
-                    <TextField source="previous" />
+                    {/* <TextField source="next" /> */}
+                    <ReferenceField label="next" source="next" reference="lessons" allowEmpty={true}>
+                        <TextField source="name" />
+                    </ReferenceField>
+                    <ReferenceField label="previous" source="previous" reference="lessons" allowEmpty={true}>
+                        <TextField source="name" />
+                    </ReferenceField>
                     <EditButton />
                 </Datagrid>
             }
