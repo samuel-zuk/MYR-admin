@@ -1,7 +1,7 @@
 import React from 'react';
 import { Admin, Resource } from 'react-admin';
 import { LessonList, LessonEdit } from './lessons';
-import { UserList } from './users';
+import { UserList, UserEdit, UserCreate } from './users';
 import { SnapshotList } from './snapshots';
 //import Icon from '@material-ui/core/Icon';
 import LessonIcon from '@material-ui/icons/Book';
@@ -14,7 +14,7 @@ import dataProvider from './dataProvider';
 const App = () => (
   <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
     <Resource name="lessons" list={LessonList} edit={LessonEdit} icon={LessonIcon} />
-    <Resource name="users" list={UserList} icon={UserIcon} />
+    <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
     <Resource name="snapshots" list={SnapshotList} icon={SnapshotIcon} />
   </Admin>
 );

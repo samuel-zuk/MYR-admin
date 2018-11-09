@@ -120,23 +120,33 @@ export default (type, resource, params) => {
             return res.json();
         })
         .then(response => {
-            //console.log(res)
             let data;
+            let total;
             switch (type) {
                 case GET_LIST:
-                    data = response.map(record => ({ id: record._id, ...record }))
+                    data = response.map(record => ({ id: record._id, ...record }));
+                    try {
+                        total = headers.get('Content-Range').split('/').pop()
+                    }
+                    catch (error) {
+                        total = data.length
+                    }
                     return {
-                        data: response.map(record => ({ id: record._id, ...record })),
-                        total: headers.get('Content-Range').split('/').pop()
+                        data: data,
+                        total: total
                     };
-                // data = ({ id: response._id, ...response })
-                // console.log(data)
-                // return { data: data };
                 case GET_MANY:
-                    data = response.map(record => ({ id: record._id, ...record }))
+                    console.log("I got many!")
+                    data = response.map(record => ({ id: record._id, ...record }));
+                    try {
+                        total = headers.get('Content-Range').split('/').pop()
+                    }
+                    catch (error) {
+                        total = data.length
+                    }
                     return {
-                        data: response.map(record => ({ id: record._id, ...record })),
-                        total: headers.get('Content-Range').split('/').pop()
+                        data: data,
+                        total: total
                     };
                 case GET_MANY_REFERENCE:
                     if (!response.headers.has('content-range')) {
@@ -144,16 +154,16 @@ export default (type, resource, params) => {
                             'The Content-Range header is missing in the HTTP Response. The simple REST data provider expects responses for lists of resources to contain this header with the total number of results to build the pagination. If you are using CORS, did you declare Content-Range in the Access-Control-Expose-Headers header?'
                         );
                     }
-                    data = ({ id: response._id, ...response })
+                    data = response.map(record => ({ id: record._id, ...record }));
+                    try {
+                        total = headers.get('Content-Range').split('/').pop()
+                    }
+                    catch (error) {
+                        total = data.length
+                    }
                     return {
                         data: data,
-                        total: parseInt(
-                            response.headers
-                                .get('content-range')
-                                .split('/')
-                                .pop(),
-                            10
-                        ),
+                        total: total,
                     };
                 case CREATE:
                     return { data: { ...params.data, id: response.id } };
@@ -161,7 +171,6 @@ export default (type, resource, params) => {
                     return response;
                 default:
                     data = ({ id: response._id, ...response })
-                    //console.log(data)
                     return { data: data };
             }
         });
