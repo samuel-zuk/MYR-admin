@@ -1,4 +1,4 @@
-import { GET_LIST, GET_ONE, GET_MANY, GET_MANY_REFERENCE, CREATE, UPDATE, DELETE, fetchUtils } from 'react-admin';
+import { GET_LIST, GET_ONE, GET_MANY, GET_MANY_REFERENCE, CREATE, UPDATE, DELETE } from 'react-admin';
 import { stringify } from 'query-string';
 
 const API_URL = '/apiv1';
@@ -36,8 +36,6 @@ export default (type, resource, params) => {
                 ]),
                 filter: JSON.stringify(params.filter),
             };
-            // console.log(query)
-            // console.log(queryString.stringify(query))
             url = `${API_URL}/${resource}?${stringify(query)}`;
             break;
         }
@@ -69,7 +67,6 @@ export default (type, resource, params) => {
         //     options.body = JSON.stringify(params.data);
         //     break;
         case DELETE:
-            console.log('Delete')
             url = `${API_URL}/${resource}/id/${params.id}`;
             options.method = 'DELETE';
             options = {
@@ -110,12 +107,9 @@ export default (type, resource, params) => {
         default:
             throw new Error(`Unsupported Data Provider request type ${type}`);
     }
-    // console.log(options)
-    // console.log(url)
     let headers;
     return fetch(url, options)
         .then(res => {
-            console.log(res)
             headers = res.headers;
             return res.json();
         })
@@ -136,7 +130,6 @@ export default (type, resource, params) => {
                         total: total
                     };
                 case GET_MANY:
-                    console.log("I got many!")
                     data = response.map(record => ({ id: record._id, ...record }));
                     try {
                         total = headers.get('Content-Range').split('/').pop()
@@ -168,7 +161,7 @@ export default (type, resource, params) => {
                 case CREATE:
                     return { data: { ...params.data, id: response.id } };
                 case DELETE:
-                    return response;
+                    return { data: { ...params.data, id: response.id } };
                 default:
                     data = ({ id: response._id, ...response })
                     return { data: data };

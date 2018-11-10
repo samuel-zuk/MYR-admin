@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Datagrid, EmailField, TextField, BooleanField, DateField } from 'react-admin';
+import { List, Datagrid, TextField, BooleanField, DateField } from 'react-admin';
 
 export const SnapshotList = (props) => (
     <List title="Snapshots" {...props}>
