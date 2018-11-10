@@ -15,8 +15,11 @@ export default (type, params) => {
                 }
                 return response.json();
             })
-            .then(({ token }) => {
-                localStorage.setItem('token', token);
+            .then((response) => {
+                if (!response.isAdmin) {
+                    return Promise.reject();
+                }
+                localStorage.setItem('token', response.token);
             });
     }
     if (type === AUTH_LOGOUT) {
