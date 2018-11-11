@@ -60,7 +60,7 @@ export const CourseList = (props) => (
             small={
                 <SimpleList
                     primaryText={record => record.name}
-                    secondaryText={record => record.shortname}
+                    secondaryText={record => `Shortname: ${record.shortname}`}
                 />
             }
             medium={
