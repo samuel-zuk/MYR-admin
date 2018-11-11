@@ -3,7 +3,7 @@ import { Admin, Resource } from 'react-admin';
 import { CourseList, CourseEdit, CourseCreate } from './pages/courses';
 import { LessonList, LessonEdit, LessonCreate } from './pages/lessons';
 import { UserList, UserEdit, UserCreate } from './pages/users';
-import { SnapshotList } from './pages/snapshots';
+import { SnapshotList, SnapshotShow } from './pages/snapshots';
 //import Icon from '@material-ui/core/Icon';
 import CourseIcon from '@material-ui/icons/List';
 import LessonIcon from '@material-ui/icons/Book';
@@ -18,7 +18,7 @@ const App = () => (
     <Resource name="courses" list={CourseList} edit={CourseEdit} create={CourseCreate} icon={CourseIcon} />
     <Resource name="lessons" list={LessonList} edit={LessonEdit} create={LessonCreate} icon={LessonIcon} />
     <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
-    <Resource name="snapshots" list={SnapshotList} icon={SnapshotIcon} />
+    <Resource name="snapshots" list={SnapshotList} show={SnapshotShow} icon={SnapshotIcon} />
   </Admin>
 );
 
