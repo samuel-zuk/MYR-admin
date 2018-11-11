@@ -17,8 +17,7 @@ import {
     Create,
     SimpleForm,
     Responsive,
-    LongTextInput,
-    FormDataConsumer
+    required
 } from 'react-admin';
 
 export const UserList = (props) => (
@@ -76,14 +75,8 @@ export const UserEdit = (props) => (
     <Edit title={<UserTitle />} {...props}>
         <SimpleForm toolbar={<UserEditToolbar />}>
             <DisabledInput source="_id" />
-            <TextInput source="name" />
-            <TextInput source="email" type="email" />
-            {/* <BooleanInput label="Update Password" source="UpdatePassword" />
-            <FormDataConsumer>
-                {({ formData, ...rest }) => formData.UpdatePassword &&
-                    <TextInput source="password" type="password" {...rest} />
-                }
-            </FormDataConsumer> */}
+            <TextInput source="name" validate={required()} />
+            <TextInput source="email" type="email" validate={required()} />
             <TextInput source="password" type="password" />
             <BooleanInput source="admin" />
             <BooleanInput source="subscribed" />
@@ -94,9 +87,9 @@ export const UserEdit = (props) => (
 export const UserCreate = (props) => (
     <Create {...props}>
         <SimpleForm toolbar={<UserCreateToolbar />}>
-            <TextInput source="name" />
-            <TextInput source="email" type="email" />
-            <TextInput source="password" type="password" />
+            <TextInput source="name" validate={required()} />
+            <TextInput source="email" type="email" validate={required()} />
+            <TextInput source="password" type="password" validate={required()} />
             <BooleanInput source="admin" />
             <BooleanInput source="subscribed" />
         </SimpleForm>
