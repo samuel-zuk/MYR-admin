@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    Filter,
     List,
     Edit,
     Create,
@@ -11,24 +10,12 @@ import {
     DisabledInput,
     LongTextInput,
     required,
-    ReferenceInput,
-    SelectInput,
     SimpleForm,
     SimpleList,
     TextInput,
     SaveButton,
     Toolbar,
 } from 'react-admin';
-
-
-const LessonFilter = (props) => (
-    <Filter {...props}>
-        <TextInput label="Search" source="q" alwaysOn />
-        <ReferenceInput label="User" source="userId" reference="users" allowEmpty>
-            <SelectInput optionText="name" />
-        </ReferenceInput>
-    </Filter>
-);
 
 const LessonEditToolbar = props => (
     <Toolbar {...props} >
@@ -53,7 +40,7 @@ const LessonCreateToolbar = props => (
 );
 
 export const LessonList = (props) => (
-    <List {...props} bulkActionButtons={false}>
+    <List {...props} bulkActionButtons={false} >
         <Responsive
             small={
                 <SimpleList

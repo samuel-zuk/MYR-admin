@@ -11,8 +11,6 @@ import {
     DisabledInput,
     LongTextInput,
     required,
-    ReferenceInput,
-    SelectInput,
     SimpleForm,
     SimpleList,
     TextInput,
@@ -25,10 +23,13 @@ import {
 
 const CourseFilter = (props) => (
     <Filter {...props}>
-        <TextInput label="Search" source="q" alwaysOn />
-        <ReferenceInput label="User" source="userId" reference="users" allowEmpty>
+        {/* <TextInput label="Search" source="q" alwaysOn /> */}
+        {/* <ReferenceInput label="User" source="userId" reference="users" allowEmpty>
             <SelectInput optionText="name" />
-        </ReferenceInput>
+        </ReferenceInput> */}
+        <NumberInput label="Difficulty" source="difficulty" />
+        {/* <TextInput label="Name" source="name" /> */}
+        <TextInput label="Shortname" source="shortname" />
     </Filter>
 );
 
@@ -55,7 +56,7 @@ const CourseCreateToolbar = props => (
 );
 
 export const CourseList = (props) => (
-    <List {...props} bulkActionButtons={false}>
+    <List {...props} bulkActionButtons={false} filters={<CourseFilter />}>
         <Responsive
             small={
                 <SimpleList

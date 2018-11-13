@@ -107,10 +107,14 @@ export default (type, resource, params) => {
         default:
             throw new Error(`Unsupported Data Provider request type ${type}`);
     }
-    let headers;
+    let headers = new Headers();
+    console.log(headers)
     return fetch(url, options)
         .then(res => {
             headers = res.headers;
+            if (res.status < 200 || res.status >= 300) {
+                throw Error(res.statusText);
+            }
             return res.json();
         })
         .then(response => {
@@ -120,7 +124,8 @@ export default (type, resource, params) => {
                 case GET_LIST:
                     data = response.map(record => ({ id: record._id, ...record }));
                     try {
-                        total = headers.get('Content-Range').split('/').pop()
+                        //total = headers.get('Content-Range').split('/').pop()
+                        total = headers.get('Total-Documents')
                     }
                     catch (error) {
                         total = data.length
@@ -132,7 +137,8 @@ export default (type, resource, params) => {
                 case GET_MANY:
                     data = response.map(record => ({ id: record._id, ...record }));
                     try {
-                        total = headers.get('Content-Range').split('/').pop()
+                        //total = headers.get('Content-Range').split('/').pop()
+                        total = headers.get('Total-Documents')
                     }
                     catch (error) {
                         total = data.length
@@ -149,7 +155,8 @@ export default (type, resource, params) => {
                     }
                     data = response.map(record => ({ id: record._id, ...record }));
                     try {
-                        total = headers.get('Content-Range').split('/').pop()
+                        //total = headers.get('Content-Range').split('/').pop()
+                        total = headers.get('Total-Documents')
                     }
                     catch (error) {
                         total = data.length

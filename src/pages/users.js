@@ -17,11 +17,20 @@ import {
     Create,
     SimpleForm,
     Responsive,
-    required
+    required,
+    Filter
 } from 'react-admin';
 
+const UserFilter = (props) => (
+    <Filter {...props}>
+        <TextInput source="email" />
+        <BooleanInput source="admin" />
+        <BooleanInput source="subscribed" />
+    </Filter>
+);
+
 export const UserList = (props) => (
-    <List title="All users" {...props} bulkActionButtons={false}>
+    <List title="All users" {...props} bulkActionButtons={false} filters={<UserFilter />}>
         <Responsive
             small={
                 <SimpleList
