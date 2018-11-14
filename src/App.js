@@ -12,7 +12,7 @@ import SnapshotIcon from '@material-ui/icons/CameraEnhance'
 import Dashboard from './pages/dashboard';
 import authProvider from './data_connections/authProvider';
 import dataProvider from './data_connections/dataProvider';
-import loginPage from './components/LoginPage.js'
+import loginPage from './pages/LoginPage'
 
 const App = () => (
   <Admin dashboard={Dashboard} loginPage={loginPage} authProvider={authProvider} dataProvider={dataProvider}>
