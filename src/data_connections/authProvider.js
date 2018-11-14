@@ -1,7 +1,6 @@
 import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK } from 'react-admin';
 export default (type, params) => {
     if (type === AUTH_LOGIN) {
-        params.email = params.username;
         const { email, password } = params;
         const request = new Request('/apiv1/users/login', {
             method: 'POST',
