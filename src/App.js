@@ -12,9 +12,10 @@ import SnapshotIcon from '@material-ui/icons/CameraEnhance'
 import Dashboard from './pages/dashboard';
 import authProvider from './data_connections/authProvider';
 import dataProvider from './data_connections/dataProvider';
+import loginPage from './pages/LoginPage'
 
 const App = () => (
-  <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
+  <Admin dashboard={Dashboard} loginPage={loginPage} authProvider={authProvider} dataProvider={dataProvider}>
     <Resource name="courses" list={CourseList} edit={CourseEdit} create={CourseCreate} icon={CourseIcon} />
     <Resource name="lessons" list={LessonList} edit={LessonEdit} create={LessonCreate} icon={LessonIcon} />
     <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
