@@ -17,9 +17,15 @@ import {
     SaveButton,
     Toolbar,
     NumberInput,
+    NumberField,
+    ArrayField,
+    SingleFieldList,
+    ChipField,
     ReferenceArrayInput,
-    AutocompleteArrayInput
+    AutocompleteArrayInput,
+    RadioButtonGroupInput,
 } from 'react-admin';
+import { StringToLabelObject } from '../components/StringToLabelObject';
 
 const CourseFilter = (props) => (
     <Filter {...props}>
@@ -68,7 +74,14 @@ export const CourseList = (props) => (
                 <Datagrid>
                     <TextField source="shortname" />
                     <TextField source="name" />
-                    <TextField source="difficulty" />
+                    <NumberField source="difficulty" />
+                    <ArrayField source="categories">
+                        <SingleFieldList>
+                            <StringToLabelObject>
+                                <ChipField source="label" />
+                            </StringToLabelObject>
+                        </SingleFieldList>
+                    </ArrayField>
                     <TextField source="description" />
                     <EditButton />
                 </Datagrid>
@@ -87,7 +100,20 @@ export const CourseEdit = (props) => (
             <DisabledInput source="_id" />
             <TextInput source="name" />
             <TextInput source="shortname" />
-            <NumberInput source="difficulty" />
+            <RadioButtonGroupInput source="difficulty" choices={[
+                { id : 1, name : "Beginner" },
+                { id : 2, name : "Intermediate" }, 
+                { id : 3, name : "Advanced" },
+                { id : 4, name : "Expert" }  
+            ]}/>
+            <AutocompleteArrayInput label="Categories" source="categories" choices={[
+               { id : "geometry", name : "Geometry"},
+               { id : "transformations", name : "Transformations"},
+               { id : "animations", name : "Animations"},
+               { id : "groups", name : "Groups" },
+               { id : "firstTimer", name : "First Timer" },
+               { id : "teachers", name : "Teachers" }
+            ]} />
             <LongTextInput source="description" />
             <ReferenceArrayInput label="Lessons" reference="lessons" source="lessons" optionValue="_id">
                 <AutocompleteArrayInput />
@@ -101,7 +127,20 @@ export const CourseCreate = (props) => (
         <SimpleForm toolbar={<CourseCreateToolbar />}>
             <TextInput source="name" validate={required()} />
             <TextInput source="shortname" validate={required()} />
-            <NumberInput source="difficulty" validate={required()} />
+            <RadioButtonGroupInput source="difficulty" validate={required()} choices={[
+                { id : 1, name : "Beginner" },
+                { id : 2, name : "Intermediate" }, 
+                { id : 3, name : "Advanced" },
+                { id : 4, name : "Expert" }  
+            ]}/>
+            <AutocompleteArrayInput source="categories" label="Categories" choices={[
+               { id : "geometry", name : "Geometry"},
+               { id : "transformations", name : "Transformations"},
+               { id : "animations", name : "Animations"},
+               { id : "groups", name : "Groups" },
+               { id : "firstTimer", name : "First Timer" },
+               { id : "teachers", name : "Teachers" }
+            ]} />
             <LongTextInput source="description" validate={required()} />
             <ReferenceArrayInput label="Lessons" reference="lessons" source="lessons" optionValue="_id">
                 <AutocompleteArrayInput />
