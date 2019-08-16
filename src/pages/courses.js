@@ -101,10 +101,10 @@ export const CourseEdit = (props) => (
             <TextInput source="name" />
             <TextInput source="shortname" />
             <RadioButtonGroupInput source="difficulty" choices={[
-                { id : 1, name : "Beginner" },
-                { id : 2, name : "Intermediate" }, 
-                { id : 3, name : "Advanced" },
-                { id : 4, name : "Expert" }  
+                { id : 0, name : "Beginner" },
+                { id : 1, name : "Intermediate" }, 
+                { id : 2, name : "Advanced" },
+                { id : 3, name : "Expert" }  
             ]}/>
             <AutocompleteArrayInput label="Categories" source="categories" choices={[
                { id : "geometry", name : "Geometry"},
@@ -128,10 +128,10 @@ export const CourseCreate = (props) => (
             <TextInput source="name" validate={required()} />
             <TextInput source="shortname" validate={required()} />
             <RadioButtonGroupInput source="difficulty" validate={required()} choices={[
-                { id : 1, name : "Beginner" },
-                { id : 2, name : "Intermediate" }, 
-                { id : 3, name : "Advanced" },
-                { id : 4, name : "Expert" }  
+                { id : 0, name : "Beginner" },
+                { id : 1, name : "Intermediate" }, 
+                { id : 2, name : "Advanced" },
+                { id : 3, name : "Expert" }  
             ]}/>
             <AutocompleteArrayInput source="categories" label="Categories" choices={[
                { id : "geometry", name : "Geometry"},
