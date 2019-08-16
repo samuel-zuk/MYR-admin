@@ -112,7 +112,8 @@ export const CourseEdit = (props) => (
                { id : "animations", name : "Animations"},
                { id : "groups", name : "Groups" },
                { id : "firstTimer", name : "First Timer" },
-               { id : "teachers", name : "Teachers" }
+               { id : "teachers", name : "Teachers" },
+               { id : "misc", name : "Miscallaneous" },
             ]} />
             <LongTextInput source="description" />
             <ReferenceArrayInput label="Lessons" reference="lessons" source="lessons" optionValue="_id">
@@ -133,13 +134,14 @@ export const CourseCreate = (props) => (
                 { id : 2, name : "Advanced" },
                 { id : 3, name : "Expert" }  
             ]}/>
-            <AutocompleteArrayInput source="categories" label="Categories" choices={[
+            <AutocompleteArrayInput source="categories" validate={required()} label="Categories" choices={[
                { id : "geometry", name : "Geometry"},
                { id : "transformations", name : "Transformations"},
                { id : "animations", name : "Animations"},
                { id : "groups", name : "Groups" },
                { id : "firstTimer", name : "First Timer" },
-               { id : "teachers", name : "Teachers" }
+               { id : "teachers", name : "Teachers" },
+               { id : "misc", name : "Miscallaneous" },
             ]} />
             <LongTextInput source="description" validate={required()} />
             <ReferenceArrayInput label="Lessons" reference="lessons" source="lessons" optionValue="_id">
