@@ -5,6 +5,8 @@ import { LessonList, LessonEdit, LessonCreate } from './pages/lessons';
 import { ReferenceExamplesList, ReferenceExamplesEdit, ReferenceExamplesCreate } from './pages/referenceExamples';
 import { UserList, UserEdit, UserCreate } from './pages/users';
 import { SnapshotList, SnapshotShow } from './pages/snapshots';
+import { NotifList, NotifEdit, NotifCreate } from './pages/Notifications';
+
 //import Icon from '@material-ui/core/Icon';
 import CourseIcon from '@material-ui/icons/List';
 import LessonIcon from '@material-ui/icons/Book';
@@ -22,6 +24,7 @@ const App = () => (
     <Resource name="lessons" list={LessonList} edit={LessonEdit} create={LessonCreate} icon={LessonIcon} />
     <Resource name="referenceExamples" list={ReferenceExamplesList} edit={ReferenceExamplesEdit} create={ReferenceExamplesCreate} icon={RefExIcon} />
     <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
+    <Resource name="notifs" list={NotifList} edit={NotifEdit} create={NotifCreate} />
     <Resource name="snapshots" list={SnapshotList} show={SnapshotShow} icon={SnapshotIcon} />
   </Admin>
 );
