@@ -2,12 +2,9 @@ import React from 'react';
 import {
     List,
     Datagrid,
-    EmailField,
     TextField,
-    BooleanField,
     DateField,
-    DateInput,
-    BooleanInput,
+    DateTimeInput,
     TextInput,
     DisabledInput,
     SimpleList,
@@ -25,8 +22,8 @@ import {
 const NotifFilter = (props) => (
     <Filter {...props}>
         <TextInput source="title" />
-        <DateInput source="endTime" showTime />
-        <DateInput source="startTime" showTime />
+        <DateTimeInput source="endTime" showTime />
+        <DateTimeInput source="startTime" showTime />
     </Filter>
 );
 
@@ -89,8 +86,8 @@ export const NotifEdit = (props) => (
             <DisabledInput source="_id" />
             <TextInput source="title" />
             <TextInput source="message" validate={required()} />
-            <DateInput source="startTime" />
-            <DateInput source="endTime" validate={required()} />
+            <DateTimeInput source="startTime" />
+            <DateTimeInput source="endTime" validate={required()} />
         </SimpleForm>
     </Edit>
 );
@@ -100,8 +97,8 @@ export const NotifCreate = (props) => (
         <SimpleForm toolbar={<NotifCreateToolbar />}>
         <TextInput source="title" />
             <TextInput source="message" validate={required()} />
-            <DateInput source="startTime" />
-            <DateInput source="endTime" validate={required()} />
+            <DateTimeInput source="startTime" />
+            <DateTimeInput source="endTime" validate={required()} />
         </SimpleForm>
     </Create>
 );
