@@ -24,7 +24,7 @@ const App = () => (
     <Resource name="lessons" list={LessonList} edit={LessonEdit} create={LessonCreate} icon={LessonIcon} />
     <Resource name="referenceExamples" list={ReferenceExamplesList} edit={ReferenceExamplesEdit} create={ReferenceExamplesCreate} icon={RefExIcon} />
     <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
-    <Resource name="notifs" list={NotifList} edit={NotifEdit} create={NotifCreate} />
+    <Resource name="notifications" list={NotifList} edit={NotifEdit} create={NotifCreate} />
     <Resource name="snapshots" list={SnapshotList} show={SnapshotShow} icon={SnapshotIcon} />
   </Admin>
 );

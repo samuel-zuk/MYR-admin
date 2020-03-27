@@ -91,6 +91,10 @@ export const NotifEdit = (props) => (
             <DisabledInput source="_id" />
             <TextInput source="title" />
             <TextInput source="message" validate={required()} />
+            <TextInput label="Background Color" source="color" type="color" />
+            <TextInput label="Font Color" source="fontColor" type="color" />
+            <TextInput label="Link Button Text" source="linkText" />
+            <TextInput label="Link Button URL" source="link" />
             <DateTimeInput source="startTime" />
             <DateTimeInput source="endTime" validate={required()} />
         </SimpleForm>
@@ -102,6 +106,10 @@ export const NotifCreate = (props) => (
         <SimpleForm toolbar={<NotifCreateToolbar />}>
             <TextInput source="title" />
             <TextInput source="message" validate={required()} />
+            <TextInput label="Background Color" source="color" type="color" validate={required()} />
+            <TextInput label="Font Color" source="fontColor" type="color" validate={required()} />
+            <TextInput label="Link Button Text" source="linkText" />
+            <TextInput label="Link Button URL" source="link" />
             <DateTimeInput source="startTime" />
             <DateTimeInput source="endTime" validate={required()} />
         </SimpleForm>
