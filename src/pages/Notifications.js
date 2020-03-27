@@ -9,6 +9,7 @@ import {
     DisabledInput,
     SimpleList,
     EditButton,
+    DeleteButton,
     Toolbar,
     SaveButton,
     Edit,
@@ -28,7 +29,7 @@ const NotifFilter = (props) => (
 );
 
 export const NotifList = (props) => (
-    <List title="All notifications" {...props} bulkActionButtons={false} filters={<NotifFilter />}>
+    <List {...props} bulkActionButtons={false} filters={<NotifFilter />}>
         <Responsive
             small={
                 <SimpleList
@@ -44,6 +45,7 @@ export const NotifList = (props) => (
                     <DateField source="startTime" showTime />
                     <DateField source="endTime" showTime />
                     <EditButton />
+                    <DeleteButton />
                 </Datagrid>
             }
         />
@@ -74,9 +76,12 @@ const NotifCreateToolbar = props => (
 
 const NotifTitle = ({ record }) => {
     return <span>{record ? 
-        (record.title ? record.title : '') + record.message
-        :
-        ''
+        (record.title ? 
+            <React.Fragment>
+                <strong>{record.title + ": "}</strong>{record.message}
+            </React.Fragment> : record.message) 
+            :
+            ''
     }</span>;
 };
 
@@ -95,7 +100,7 @@ export const NotifEdit = (props) => (
 export const NotifCreate = (props) => (
     <Create {...props}>
         <SimpleForm toolbar={<NotifCreateToolbar />}>
-        <TextInput source="title" />
+            <TextInput source="title" />
             <TextInput source="message" validate={required()} />
             <DateTimeInput source="startTime" />
             <DateTimeInput source="endTime" validate={required()} />
