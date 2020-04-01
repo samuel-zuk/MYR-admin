@@ -20,6 +20,9 @@ import {
     Filter
 } from 'react-admin';
 
+let tmp = document.createElement("input");
+tmp.setAttribute("type", "datetime-local");
+
 const NotifFilter = (props) => (
     <Filter {...props}>
         <TextInput source="title" />
@@ -28,7 +31,7 @@ const NotifFilter = (props) => (
     </Filter>
 );
 
-export const NotifList = (props) => (
+export const NotifList = (props) => ( tmp.type === "datetime-local" ?
     <List {...props} bulkActionButtons={false} filters={<NotifFilter />}>
         <Responsive
             small={
@@ -50,6 +53,10 @@ export const NotifList = (props) => (
             }
         />
     </List>
+    :
+    <p>
+        Your browser is missing support for needed to create and edit Notifications, consider using <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>
+    </p>
 );
 
 const NotifEditToolbar = props => (
@@ -106,8 +113,8 @@ export const NotifCreate = (props) => (
         <SimpleForm toolbar={<NotifCreateToolbar />}>
             <TextInput source="title" />
             <TextInput source="message" validate={required()} />
-            <TextInput label="Background Color" source="color" type="color" validate={required()} />
-            <TextInput label="Font Color" source="fontColor" type="color" validate={required()} />
+            <TextInput label="Background Color" source="color" type="color" validate={required()} defaultValue="#FFFF00" />
+            <TextInput label="Font Color" source="fontColor" type="color" validate={required()} defaultValue="#000000" />
             <TextInput label="Link Button Text" source="linkText" />
             <TextInput label="Link Button URL" source="link" />
             <DateTimeInput source="startTime" />
