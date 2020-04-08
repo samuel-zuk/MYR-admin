@@ -1,5 +1,8 @@
 import React from 'react';
+
 import {
+    ArrayInput,
+    SimpleFormIterator,
     Filter,
     List,
     Edit,
@@ -11,14 +14,13 @@ import {
     DisabledInput,
     LongTextInput,
     required,
-    SimpleForm,
     SimpleList,
     TextInput,
     SaveButton,
     Toolbar,
     NumberInput,
-    ReferenceArrayInput,
-    AutocompleteArrayInput
+    TabbedForm,
+    FormTab
 } from 'react-admin';
 
 const CourseFilter = (props) => (
@@ -70,6 +72,7 @@ export const CourseList = (props) => (
                     <TextField source="name" />
                     <TextField source="difficulty" />
                     <TextField source="description" />
+                    <TextField label="Lessons" source="lessons.length" />
                     <EditButton />
                 </Datagrid>
             }
@@ -83,29 +86,47 @@ const CourseTitle = ({ record }) => {
 
 export const CourseEdit = (props) => (
     <Edit title={<CourseTitle />} {...props}>
-        <SimpleForm toolbar={<CourseEditToolbar />}>
-            <DisabledInput source="_id" />
-            <TextInput source="name" />
-            <TextInput source="shortname" />
-            <NumberInput source="difficulty" />
-            <LongTextInput source="description" />
-            <ReferenceArrayInput label="Lessons" reference="lessons" source="lessons" optionValue="_id">
-                <AutocompleteArrayInput />
-            </ReferenceArrayInput>
-        </SimpleForm>
+        <TabbedForm toolbar={<CourseEditToolbar />}>
+            <FormTab label="Course Information">
+                <DisabledInput source="_id" />
+                <TextInput source="name" validate={required()}/>
+                <TextInput source="shortname" validate={required()}/>
+                <NumberInput source="difficulty" validate={required()}/>
+                <LongTextInput source="description" validate={required()}/>
+            </FormTab>
+            <FormTab label="Lessons">
+                <ArrayInput source="lessons">
+                    <SimpleFormIterator>
+                        <br />
+                        <TextInput source="name"/>
+                        <LongTextInput source="prompt" />
+                        <LongTextInput source="code" />
+                    </SimpleFormIterator>
+                </ArrayInput>
+            </FormTab>
+        </TabbedForm>
     </Edit>
 );
 
 export const CourseCreate = (props) => (
     <Create {...props}>
-        <SimpleForm toolbar={<CourseCreateToolbar />}>
-            <TextInput source="name" validate={required()} />
-            <TextInput source="shortname" validate={required()} />
-            <NumberInput source="difficulty" validate={required()} />
-            <LongTextInput source="description" validate={required()} />
-            <ReferenceArrayInput label="Lessons" reference="lessons" source="lessons" optionValue="_id">
-                <AutocompleteArrayInput />
-            </ReferenceArrayInput>
-        </SimpleForm>
+        <TabbedForm toolbar={<CourseCreateToolbar />}>
+            <FormTab label="Course Information">
+                <TextInput source="name" validate={required()} />
+                <TextInput source="shortname" validate={required()} />
+                <NumberInput source="difficulty" validate={required()} />
+                <LongTextInput source="description" validate={required()} />
+            </FormTab>
+            <FormTab label="Lessons">
+                <ArrayInput source="lessons">
+                        <SimpleFormIterator>
+                            <br />
+                            <TextInput source="name"/>
+                            <LongTextInput source="prompt" />
+                            <LongTextInput source="code" />
+                        </SimpleFormIterator>
+                    </ArrayInput>
+            </FormTab>
+        </TabbedForm>
     </Create>
 );
