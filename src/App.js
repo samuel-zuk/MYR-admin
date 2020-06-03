@@ -13,16 +13,16 @@ import Dashboard from './pages/dashboard';
 import authProvider from './data_connections/authProvider';
 import dataProvider from './data_connections/dataProvider';
 import loginPage from './pages/LoginPage'
-import { SceneList } from './pages/Scenes';
+import { SceneList, SceneShow } from './pages/Scenes';
 
 const App = () => (
   <Admin dashboard={Dashboard} loginPage={loginPage} authProvider={authProvider} dataProvider={dataProvider}>
+    <Resource name="scenes" list={SceneList} show={SceneShow} />
     <Resource name="courses" list={CourseList} edit={CourseEdit} create={CourseCreate} icon={CourseIcon} />
     <Resource name="referenceExamples" list={ReferenceExamplesList} edit={ReferenceExamplesEdit} create={ReferenceExamplesCreate} icon={RefExIcon} />
     <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
     <Resource name="notifications" list={NotifList} edit={NotifEdit} create={NotifCreate} />
     <Resource name="snapshots" list={SnapshotList} show={SnapshotShow} icon={SnapshotIcon} />
-    <Resource name="scenes" list={SceneList} />
   </Admin>
 );
 
