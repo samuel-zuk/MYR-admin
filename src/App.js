@@ -14,10 +14,12 @@ import authProvider from './data_connections/authProvider';
 import dataProvider from './data_connections/dataProvider';
 import loginPage from './pages/LoginPage'
 import { SceneList, SceneShow } from './pages/Scenes';
+import { CollectionList, CollectionShow } from './pages/Collections';
 
 const App = () => (
   <Admin dashboard={Dashboard} loginPage={loginPage} authProvider={authProvider} dataProvider={dataProvider}>
     <Resource name="scenes" list={SceneList} show={SceneShow} />
+    <Resource name="collections" list={CollectionList} show={CollectionShow} />
     <Resource name="courses" list={CourseList} edit={CourseEdit} create={CourseCreate} icon={CourseIcon} />
     <Resource name="referenceExamples" list={ReferenceExamplesList} edit={ReferenceExamplesEdit} create={ReferenceExamplesCreate} icon={RefExIcon} />
     <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />

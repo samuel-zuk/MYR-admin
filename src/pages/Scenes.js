@@ -46,8 +46,6 @@ export const SceneList = (props) => (
 );
 
 export const SceneShow = (props) => {
-    console.log("Props");
-    console.log(props);
     return (
         <Show {...props}>
             <SimpleShowLayout>
@@ -55,6 +53,7 @@ export const SceneShow = (props) => {
                 <TextField source="_id" />
                 <TextField source="name" />
                 <TextField source="description" />
+                <TextField source="settings.collection" label="Collection" />
                 <RichTextField source="code" />
             </SimpleShowLayout>
         </Show>
