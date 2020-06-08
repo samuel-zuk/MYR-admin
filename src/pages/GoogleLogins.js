@@ -36,7 +36,6 @@ export const GoogleLoginList = (props) => (
                     <TextField source="email" />
                     <TextField source="googleId" />
                     <ShowButton />
-                    <DeleteButton />
                 </Datagrid>
             }
         />
