@@ -14,6 +14,8 @@ import {
     Filter
 } from 'react-admin';
 
+import PromoteButton from '../components/PromoteButton';
+
 const SceneFilter = (props) => (
     <Filter {...props}>
         <TextInput source="name" />
@@ -37,7 +39,8 @@ export const SceneList = (props) => (
                     <TextField source="description" />
                     <TextField source="uid" showTime />
                     <TextField source="code" showTime />
-                    <ShowButton />
+                    <PromoteButton />
+                    <ShowButton/>
                     <DeleteButton />
                 </Datagrid>
             }

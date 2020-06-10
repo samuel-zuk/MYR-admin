@@ -8,7 +8,6 @@ import {
     ShowButton,
     TextInput,
     SimpleList,
-    DeleteButton,
     Responsive,
     Filter
 } from 'react-admin';

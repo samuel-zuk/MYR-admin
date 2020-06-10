@@ -11,8 +11,7 @@ import {
     DeleteButton,
     Responsive,
     Filter,
-    ArrayField,
-    Link
+    ArrayField
 } from 'react-admin';
 
 const CollectionFilter = (props) => (
