@@ -52,7 +52,7 @@ export const SceneShow = (props) => {
     return (
         <Show {...props}>
             <SimpleShowLayout>
-                <img src={`/apiv1/scenes/preview/${props.id}`} style={{ maxHeight: "300px" }} alt="Scene Preview" />
+                <img src={`/apiv1/preview/id/${props.id}`} style={{ maxHeight: "300px" }} alt="Scene Preview" />
                 <TextField source="_id" />
                 <TextField source="name" />
                 <TextField source="description" />
