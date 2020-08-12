@@ -55,7 +55,7 @@ export const NotifList = (props) => ( tmp.type === "datetime-local" ?
     </List>
     :
     <p>
-        Your browser is missing support for input types needed to create and edit Notifications, consider using <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>
+        Your browser is missing support for input types needed to create and edit Notifications, consider using <a href="https://www.google.com/chrome/" target="_blank" rel="noopener noreferrer">Chrome</a>
     </p>
 );
 
