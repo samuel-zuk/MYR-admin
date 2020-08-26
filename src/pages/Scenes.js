@@ -23,6 +23,17 @@ const SceneFilter = (props) => (
     </Filter>
 );
 
+const TruncatedCodeField = (props) => {
+    console.log(props.record.code.length);
+    let code = props.record.code;
+    if(code.length >= 2000) {
+        props.record.code = code.slice(0, 2000) + "...";
+    }
+    return (
+        <TextField {...props} source="code" />
+    );
+};
+
 export const SceneList = (props) => (
     <List {...props} bulkActionButtons={false} filters={<SceneFilter />}>
         <Responsive
@@ -38,7 +49,7 @@ export const SceneList = (props) => (
                     <TextField source="name" />
                     <TextField source="description" />
                     <TextField source="uid" showTime />
-                    <TextField source="code" showTime />
+                    <TruncatedCodeField source="code" />
                     <PromoteButton />
                     <ShowButton/>
                     <DeleteButton />
@@ -57,7 +68,7 @@ export const SceneShow = (props) => {
                 <TextField source="name" />
                 <TextField source="description" />
                 <TextField source="settings.collection" label="Collection" />
-                <RichTextField source="code" />
+                <RichTextField source="code" component="pre" />
             </SimpleShowLayout>
         </Show>
     );

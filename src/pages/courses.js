@@ -27,7 +27,8 @@ import {
     AutocompleteArrayInput,
     RadioButtonGroupInput,
     TabbedForm,
-    FormTab
+    FormTab,
+    SimpleForm
 } from 'react-admin';
 import { StringToLabelObject } from '../components/StringToLabelObject';
 
@@ -101,32 +102,6 @@ const CourseTitle = ({ record }) => {
 
 export const CourseEdit = (props) => (
     <Edit title={<CourseTitle />} {...props}>
-<<<<<<< HEAD
-        <SimpleForm toolbar={<CourseEditToolbar />}>
-            <DisabledInput source="_id" />
-            <TextInput source="name" />
-            <TextInput source="shortname" />
-            <RadioButtonGroupInput source="difficulty" choices={[
-                { id : 0, name : "Beginner" },
-                { id : 1, name : "Intermediate" }, 
-                { id : 2, name : "Advanced" },
-                { id : 3, name : "Expert" }  
-            ]}/>
-            <AutocompleteArrayInput label="Categories" source="categories" choices={[
-               { id : "geometry", name : "Geometry"},
-               { id : "transformations", name : "Transformations"},
-               { id : "animations", name : "Animations"},
-               { id : "groups", name : "Groups" },
-               { id : "firstTimer", name : "First Timer" },
-               { id : "teachers", name : "Teachers" },
-               { id : "misc", name : "Miscallaneous" },
-            ]} />
-            <LongTextInput source="description" />
-            <ReferenceArrayInput label="Lessons" reference="lessons" source="lessons" optionValue="_id">
-                <AutocompleteArrayInput />
-            </ReferenceArrayInput>
-        </SimpleForm>
-=======
         <TabbedForm toolbar={<CourseEditToolbar />}>
             <FormTab label="Course Information">
                 <DisabledInput source="_id" />
@@ -134,6 +109,21 @@ export const CourseEdit = (props) => (
                 <TextInput source="shortname" validate={required()}/>
                 <NumberInput source="difficulty" validate={required()}/>
                 <LongTextInput source="description" validate={required()}/>
+                <RadioButtonGroupInput source="difficulty" choices={[
+                    { id : 0, name : "Beginner" },
+                    { id : 1, name : "Intermediate" }, 
+                    { id : 2, name : "Advanced" },
+                    { id : 3, name : "Expert" }  
+                ]}/>
+                <AutocompleteArrayInput label="Categories" source="categories" choices={[
+                { id : "geometry", name : "Geometry"},
+                { id : "transformations", name : "Transformations"},
+                { id : "animations", name : "Animations"},
+                { id : "groups", name : "Groups" },
+                { id : "firstTimer", name : "First Timer" },
+                { id : "teachers", name : "Teachers" },
+                { id : "misc", name : "Miscallaneous" },
+                ]} />
             </FormTab>
             <FormTab label="Lessons">
                 <ArrayInput source="lessons">
@@ -146,13 +136,11 @@ export const CourseEdit = (props) => (
                 </ArrayInput>
             </FormTab>
         </TabbedForm>
->>>>>>> dcd4a68182acfce4798bd49f024702de0ffa5a26
     </Edit>
 );
 
 export const CourseCreate = (props) => (
     <Create {...props}>
-<<<<<<< HEAD
         <SimpleForm toolbar={<CourseCreateToolbar />}>
             <TextInput source="name" validate={required()} />
             <TextInput source="shortname" validate={required()} />
@@ -176,25 +164,5 @@ export const CourseCreate = (props) => (
                 <AutocompleteArrayInput />
             </ReferenceArrayInput>
         </SimpleForm>
-=======
-        <TabbedForm toolbar={<CourseCreateToolbar />}>
-            <FormTab label="Course Information">
-                <TextInput source="name" validate={required()} />
-                <TextInput source="shortname" validate={required()} />
-                <NumberInput source="difficulty" validate={required()} />
-                <LongTextInput source="description" validate={required()} />
-            </FormTab>
-            <FormTab label="Lessons">
-                <ArrayInput source="lessons">
-                        <SimpleFormIterator>
-                            <br />
-                            <TextInput source="name"/>
-                            <LongTextInput source="prompt" />
-                            <LongTextInput source="code" />
-                        </SimpleFormIterator>
-                    </ArrayInput>
-            </FormTab>
-        </TabbedForm>
->>>>>>> dcd4a68182acfce4798bd49f024702de0ffa5a26
     </Create>
 );
