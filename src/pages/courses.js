@@ -13,12 +13,13 @@ import {
     EditButton,
     DisabledInput,
     LongTextInput,
+    TextInput,
+    NumberInput,
+    BooleanInput,
     required,
     SimpleList,
-    TextInput,
     SaveButton,
     Toolbar,
-    NumberInput,
     TabbedForm,
     FormTab
 } from 'react-admin';
@@ -101,6 +102,14 @@ export const CourseEdit = (props) => (
                         <TextInput source="name"/>
                         <LongTextInput source="prompt" />
                         <LongTextInput source="code" />
+                        <TextInput source="settings.skyColor"/>
+                        <BooleanInput source="settings.showFloor"/>
+                        <TextInput source="settings.floorColor"/>
+                        <BooleanInput source="settings.showCoordHelper"/>
+                        <TextInput source="settings.camPositon"/>
+                        <NumberInput source="settings.camConfig"/>
+                        <BooleanInput source="settings.canFly"/>
+                        <BooleanInput source="settings.viewOnly"/>
                     </SimpleFormIterator>
                 </ArrayInput>
             </FormTab>
