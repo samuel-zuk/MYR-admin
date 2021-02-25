@@ -103,16 +103,16 @@ export const CourseEdit = (props) => (
                         <LongTextInput source="prompt" />
                         <LongTextInput source="code" />
                         <TextInput source="settings.skyColor" type="color" label="Sky Color" defaultValue="#ffffff" />
-                        <BooleanInput source="settings.showFloor" label="Show Floor" />
-                        <TextInput source="settings.floorColor" type="color" label="Floor Color" defaultValue="#000000" />
-                        <BooleanInput source="settings.showCoordHelper" label="Show Coordinate Helper" />
+                        <BooleanInput source="settings.showFloor" label="Show Floor" defaultValue={true} />
+                        <TextInput source="settings.floorColor" type="color" label="Floor Color" defaultValue="#272727" />
+                        <BooleanInput source="settings.showCoordHelper" label="Show Coordinate Helper" defaultValue={false} />
                         <TextInput source="settings.camPositon" label="Camera Position" />
                         <NumberInput source="settings.camConfig" label="Camera Config" />
-                        <BooleanInput source="settings.canFly" label="Can Fly"/>
-                        <BooleanInput source="settings.viewOnly" label="View Only" />
-                        <BooleanInput source="settings.defaultLight" label="Default Light" />
-                        <BooleanInput source="settings.lightIndicator" label="Show Light Indicators" />
-                        <BooleanInput source="settings.shadow" label="Cast Shadows" />
+                        <BooleanInput source="settings.canFly" label="Can Fly" defaultValue={false} />
+                        <BooleanInput source="settings.viewOnly" label="View Only" defaultValue={false} />
+                        <BooleanInput source="settings.defaultLight" label="Default Light" defaultValue={true} />
+                        <BooleanInput source="settings.lightIndicator" label="Show Light Indicators" defaultValue={false} />
+                        <BooleanInput source="settings.shadow" label="Cast Shadows" defaultValue={false} />
                     </SimpleFormIterator>
                 </ArrayInput>
             </FormTab>
@@ -133,20 +133,20 @@ export const CourseCreate = (props) => (
                 <ArrayInput source="lessons">
                         <SimpleFormIterator>
                             <br />
-                            <TextInput source="name"/>
-                            <LongTextInput source="prompt" />
-                            <LongTextInput source="code" />
+                            <TextInput source="name" validate={required()} />
+                            <LongTextInput source="prompt" validate={required()} />
+                            <LongTextInput source="code" validate={required()} />
                             <TextInput source="settings.skyColor" type="color" label="Sky Color" defaultValue="#ffffff" />
-                            <BooleanInput source="settings.showFloor" label="Show Floor" />
-                            <TextInput source="settings.floorColor" type="color" label="Floor Color" defaultValue="#000000" />
-                            <BooleanInput source="settings.showCoordHelper" label="Show Coordinate Helper" />
+                            <BooleanInput source="settings.showFloor" label="Show Floor" defaultValue={true} />
+                            <TextInput source="settings.floorColor" type="color" label="Floor Color" defaultValue="#272727" />
+                            <BooleanInput source="settings.showCoordHelper" label="Show Coordinate Helper" defaultValue={false} />
                             <TextInput source="settings.camPositon" label="Camera Position" />
                             <NumberInput source="settings.camConfig" label="Camera Config" />
-                            <BooleanInput source="settings.canFly" label="Can Fly"/>
-                            <BooleanInput source="settings.viewOnly" label="View Only" />
-                            <BooleanInput source="settings.defaultLight" label="Default Light" />
-                            <BooleanInput source="settings.lightIndicator" label="Show Light Indicators" />
-                            <BooleanInput source="settings.shadow" label="Cast Shadows" />
+                            <BooleanInput source="settings.canFly" label="Can Fly" defaultValue={false} />
+                            <BooleanInput source="settings.viewOnly" label="View Only" defaultValue={false} />
+                            <BooleanInput source="settings.defaultLight" label="Default Light" defaultValue={true} />
+                            <BooleanInput source="settings.lightIndicator" label="Show Light Indicators" defaultValue={false} />
+                            <BooleanInput source="settings.shadow" label="Cast Shadows" defaultValue={false} />
                         </SimpleFormIterator>
                     </ArrayInput>
             </FormTab>
