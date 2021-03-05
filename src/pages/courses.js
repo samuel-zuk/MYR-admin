@@ -13,12 +13,13 @@ import {
     EditButton,
     DisabledInput,
     LongTextInput,
+    TextInput,
+    NumberInput,
+    BooleanInput,
     required,
     SimpleList,
-    TextInput,
     SaveButton,
     Toolbar,
-    NumberInput,
     TabbedForm,
     FormTab
 } from 'react-admin';
@@ -101,6 +102,17 @@ export const CourseEdit = (props) => (
                         <TextInput source="name"/>
                         <LongTextInput source="prompt" />
                         <LongTextInput source="code" />
+                        <TextInput source="settings.skyColor" type="color" label="Sky Color" defaultValue="#ffffff" />
+                        <BooleanInput source="settings.showFloor" label="Show Floor" />
+                        <TextInput source="settings.floorColor" type="color" label="Floor Color" defaultValue="#000000" />
+                        <BooleanInput source="settings.showCoordHelper" label="Show Coordinate Helper" />
+                        <TextInput source="settings.camPositon" label="Camera Position" />
+                        <NumberInput source="settings.camConfig" label="Camera Config" />
+                        <BooleanInput source="settings.canFly" label="Can Fly"/>
+                        <BooleanInput source="settings.viewOnly" label="View Only" />
+                        <BooleanInput source="settings.defaultLight" label="Default Light" />
+                        <BooleanInput source="settings.lightIndicator" label="Show Light Indicators" />
+                        <BooleanInput source="settings.shadow" label="Cast Shadows" />
                     </SimpleFormIterator>
                 </ArrayInput>
             </FormTab>
@@ -124,6 +136,17 @@ export const CourseCreate = (props) => (
                             <TextInput source="name"/>
                             <LongTextInput source="prompt" />
                             <LongTextInput source="code" />
+                            <TextInput source="settings.skyColor" type="color" label="Sky Color" defaultValue="#ffffff" />
+                            <BooleanInput source="settings.showFloor" label="Show Floor" />
+                            <TextInput source="settings.floorColor" type="color" label="Floor Color" defaultValue="#000000" />
+                            <BooleanInput source="settings.showCoordHelper" label="Show Coordinate Helper" />
+                            <TextInput source="settings.camPositon" label="Camera Position" />
+                            <NumberInput source="settings.camConfig" label="Camera Config" />
+                            <BooleanInput source="settings.canFly" label="Can Fly"/>
+                            <BooleanInput source="settings.viewOnly" label="View Only" />
+                            <BooleanInput source="settings.defaultLight" label="Default Light" />
+                            <BooleanInput source="settings.lightIndicator" label="Show Light Indicators" />
+                            <BooleanInput source="settings.shadow" label="Cast Shadows" />
                         </SimpleFormIterator>
                     </ArrayInput>
             </FormTab>
