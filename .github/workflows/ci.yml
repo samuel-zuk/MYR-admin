@@ -16,6 +16,6 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       - name: Fetch packages
-        run: yarn ci
+        run: yarn install
       - name: Build production build
         run: yarn build
