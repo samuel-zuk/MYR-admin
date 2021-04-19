@@ -90,7 +90,8 @@ export const ReferenceExamplesEdit = (props) => (
                 { id: 'Geometry', name: 'Geometry' },
                 { id: 'Transformation', name: 'Transformation' },
                 { id: 'Animation', name: 'Animation' },
-                { id: 'Group', name: 'Group' }
+                { id: 'Group', name: 'Group' },
+                { id: 'Texture', name: 'Texture' }
             ]} />
             <ArrayInput source="functionParams">
                 <SimpleFormIterator>
@@ -119,7 +120,8 @@ export const ReferenceExamplesCreate = (props) => (
                 { id: 'Geometry', name: 'Geometry' },
                 { id: 'Transformation', name: 'Transformation' },
                 { id: 'Animation', name: 'Animation' },
-                { id: 'Group', name: 'Group' }
+                { id: 'Group', name: 'Group' },
+                { id: 'Texture', name: 'Texture' }
             ]} />
             <ArrayInput source="functionParams">
                 <SimpleFormIterator>

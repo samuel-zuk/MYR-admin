@@ -13,19 +13,13 @@ import {
     EditButton,
     DisabledInput,
     LongTextInput,
+    TextInput,
+    NumberInput,
+    BooleanInput,
     required,
     SimpleList,
-    TextInput,
     SaveButton,
     Toolbar,
-    NumberInput,
-    NumberField,
-    ArrayField,
-    SingleFieldList,
-    ChipField,
-    ReferenceArrayInput,
-    AutocompleteArrayInput,
-    RadioButtonGroupInput,
     TabbedForm,
     FormTab,
     SimpleForm
@@ -132,6 +126,17 @@ export const CourseEdit = (props) => (
                         <TextInput source="name"/>
                         <LongTextInput source="prompt" />
                         <LongTextInput source="code" />
+                        <TextInput source="settings.skyColor" type="color" label="Sky Color" defaultValue="#ffffff" />
+                        <BooleanInput source="settings.showFloor" label="Show Floor" defaultValue={true} />
+                        <TextInput source="settings.floorColor" type="color" label="Floor Color" defaultValue="#272727" />
+                        <BooleanInput source="settings.showCoordHelper" label="Show Coordinate Helper" defaultValue={false} />
+                        <TextInput source="settings.camPositon" label="Camera Position" />
+                        <NumberInput source="settings.camConfig" label="Camera Config" />
+                        <BooleanInput source="settings.canFly" label="Can Fly" defaultValue={false} />
+                        <BooleanInput source="settings.viewOnly" label="View Only" defaultValue={false} />
+                        <BooleanInput source="settings.defaultLight" label="Default Light" defaultValue={true} />
+                        <BooleanInput source="settings.lightIndicator" label="Show Light Indicators" defaultValue={false} />
+                        <BooleanInput source="settings.shadow" label="Cast Shadows" defaultValue={false} />
                     </SimpleFormIterator>
                 </ArrayInput>
             </FormTab>
@@ -141,6 +146,7 @@ export const CourseEdit = (props) => (
 
 export const CourseCreate = (props) => (
     <Create {...props}>
+<<<<<<< HEAD
         <SimpleForm toolbar={<CourseCreateToolbar />}>
             <TextInput source="name" validate={required()} />
             <TextInput source="shortname" validate={required()} />
@@ -164,5 +170,36 @@ export const CourseCreate = (props) => (
                 <AutocompleteArrayInput />
             </ReferenceArrayInput>
         </SimpleForm>
+=======
+        <TabbedForm toolbar={<CourseCreateToolbar />}>
+            <FormTab label="Course Information">
+                <TextInput source="name" validate={required()} />
+                <TextInput source="shortname" validate={required()} />
+                <NumberInput source="difficulty" validate={required()} />
+                <LongTextInput source="description" validate={required()} />
+            </FormTab>
+            <FormTab label="Lessons">
+                <ArrayInput source="lessons">
+                        <SimpleFormIterator>
+                            <br />
+                            <TextInput source="name" validate={required()} />
+                            <LongTextInput source="prompt" validate={required()} />
+                            <LongTextInput source="code" validate={required()} />
+                            <TextInput source="settings.skyColor" type="color" label="Sky Color" defaultValue="#ffffff" />
+                            <BooleanInput source="settings.showFloor" label="Show Floor" defaultValue={true} />
+                            <TextInput source="settings.floorColor" type="color" label="Floor Color" defaultValue="#272727" />
+                            <BooleanInput source="settings.showCoordHelper" label="Show Coordinate Helper" defaultValue={false} />
+                            <TextInput source="settings.camPositon" label="Camera Position" />
+                            <NumberInput source="settings.camConfig" label="Camera Config" />
+                            <BooleanInput source="settings.canFly" label="Can Fly" defaultValue={false} />
+                            <BooleanInput source="settings.viewOnly" label="View Only" defaultValue={false} />
+                            <BooleanInput source="settings.defaultLight" label="Default Light" defaultValue={true} />
+                            <BooleanInput source="settings.lightIndicator" label="Show Light Indicators" defaultValue={false} />
+                            <BooleanInput source="settings.shadow" label="Cast Shadows" defaultValue={false} />
+                        </SimpleFormIterator>
+                    </ArrayInput>
+            </FormTab>
+        </TabbedForm>
+>>>>>>> 569b668db56361b0c1d2033c6eb80d61ccf9da4e
     </Create>
 );
